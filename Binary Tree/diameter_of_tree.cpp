@@ -42,7 +42,9 @@ int diameter_of_tree(node* root)
 	}
 	int lh= height(root->left);
     int rh= height(root->right);
-    int op1= lh + rh +1 ;
+    int op1= lh + rh+1 ;
+    // counting below tree diameter as 5 
+    // if diameter is 4 then op1= lh + rh would work fine 
     int op2= diameter_of_tree(root->left);
     int op3= diameter_of_tree(root->right);
     int ans = max(op1,max(op2,op3));
@@ -68,6 +70,7 @@ pair1 optimised_diameter(node* root)
 	 return ans;
 }
 // another approach without pair
+// apna college code
  int fast_diamater(node* root , int* height)
  {
  	if(root==NULL)
@@ -99,9 +102,9 @@ int main()
     root->right->left =new node(6);
     root->right->right= new node(7);
     int height=0;
-    // int ans = diameter_of_tree(root);
+    cout<<diameter_of_tree(root)<<endl;
     // pair1 ans = optimised_diameter(root);
     // cout<<ans.height<<"  "<<ans.diameter<<endl;
-    cout<<fast_diamater(root,&height)<<endl;
+    // cout<<fast_diamater(root,&height)<<endl;
     return 0;
 }
