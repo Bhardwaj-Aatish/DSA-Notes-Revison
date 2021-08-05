@@ -35,6 +35,7 @@ void right_view_bfs(node* root)
 		{
 			node* temp = q.front();
 			q.pop();
+			// node present at n-1 of queue is the rightest node of out tree at a particular level 
 			if(i==n-1)
 			{
 				cout<<temp->data<<endl;
@@ -57,11 +58,14 @@ void right_view_dfs_helper(node* root, int level , int &maxlevel)
       {
       	return ;
       }
+      // when level increase by maxlevel then print that node and updata maxlevel as level
       if(maxlevel< level)
       {
       	cout<<root->data<<" ";
       	maxlevel= level;
       }
+      // for right view we are calling right first 
+      // so that when level increase by maxlevel then rightest node will the one to be printed
       right_view_dfs_helper(root->right, level+1, maxlevel);
       right_view_dfs_helper(root->left, level+1, maxlevel);
 }
